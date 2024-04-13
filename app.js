@@ -1,10 +1,13 @@
+// use environment variables
 const dotenv = require("dotenv");
 dotenv.config();
 
+// use express
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+// main route
 app.get("/download/:email", (req, res) => {
   const axios = require("axios");
   const FormData = require("form-data");
@@ -12,12 +15,8 @@ app.get("/download/:email", (req, res) => {
   const path = require("path");
 
   const pdfRestKey = process.env.PDFRESTKEY;
-  console.log(pdfRestKey);
 
   const pdfPath = path.join(__dirname, "assets", "dummypdf.pdf");
-
-
-  // console.log(pdfPath);
 
   const email = req.params.email;
 
@@ -56,6 +55,7 @@ app.get("/download/:email", (req, res) => {
     });
 });
 
+// start app
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
