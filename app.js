@@ -7,6 +7,14 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// testing ejs
+app.get("/", (req, res) => {
+  res.render('pages/index');
+});
+
 // main route
 app.get("/download/:email", (req, res) => {
   const axios = require("axios");
