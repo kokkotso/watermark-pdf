@@ -12,7 +12,10 @@ app.set('view engine', 'ejs');
 
 // testing ejs
 app.get("/", (req, res) => {
-  res.render('pages/index');
+  const testUrl = 'https://www.walkerdunlop.com';
+  res.render('pages/index', {
+    testUrl: testUrl
+  });
 });
 
 // main route
@@ -55,8 +58,11 @@ app.get("/download/:email", (req, res) => {
 
   return axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      res.redirect(response.data.outputUrl);
+      const watermarkedPdf = response.data.outputUrl;
+      // console.log(JSON.stringify(response.data));
+      res.render('pages/index', {
+        watermarkedPdf: watermarkedPdf
+      });
     })
     .catch(function (error) {
       console.log(error);
