@@ -10,14 +10,6 @@ const port = process.env.PORT || 3000;
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// testing ejs
-app.get("/", (req, res) => {
-  const testUrl = 'https://www.walkerdunlop.com';
-  res.render('pages/index', {
-    testUrl: testUrl
-  });
-});
-
 // main route
 app.get("/download/:email", (req, res) => {
   const axios = require("axios");
