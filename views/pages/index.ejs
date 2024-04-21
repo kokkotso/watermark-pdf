@@ -16,10 +16,14 @@
     </div>
     <h1>Thank you for downloading the W&D Market Intelligence Report.</h1>
     <p><em>If your download doesn't start automatically, please click below.</em></p>
-    <a class="btn btn-primary btn-large" role="button" href="<%= watermarkedPdf %>" target="_blank">Download</a>
+    <a id="pdfDownload" download="W&D Market Intelligence Report" class="btn btn-primary btn-large" role="button" href="<%= watermarkedPdf %>" target="_blank">Download</a>
   </div>
 </main>
-
+<script>
+  window.onload = function() {
+    document.getElementById('pdfDownload').click();
+  }
+</script>
 <footer>
   <%- include('../partials/footer'); %>
 </footer>
